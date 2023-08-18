@@ -11,13 +11,31 @@ class HomeCubit extends Cubit<HomeState> {
     required this.breedApi,
   }) : super(HomeInitial());
 
+  final List<Breed> allBreeds = [];
+
   Future<void> getBreeds() async {
     emit(HomeLoading());
     try {
       final List<Breed> breeds = await breedApi.fetchBreeds();
+      allBreeds.addAll(breeds);
       emit(HomeLoaded(breeds: breeds));
     } catch (e) {
       emit(HomeError(message: e.toString()));
+    }
+  }
+
+  Future<void> searchBreeds(String query) async {
+    if (query.isEmpty) {
+      emit(HomeLoaded(breeds: allBreeds));
+    }
+    final currentState = state;
+    if (currentState is HomeLoaded) {
+      final List<Breed> breeds = allBreeds
+          .where(
+              (breed) => breed.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+
+      emit(HomeLoaded(breeds: breeds));
     }
   }
 }
