@@ -9,7 +9,7 @@ class BreedApi {
     required this.client,
   });
 
-  Future<List<Breed>> fetchCharacters(int pageNumber) async {
+  Future<List<Breed>> fetchBreeds() async {
     final uri = Uri.parse("https://api.thecatapi.com/v1/breeds");
     final response = await client.get(uri, headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,7 @@ class BreedApi {
           "live_rDOTcH0uwiZt6T3jRvZPYFyxJrvpkWAuAq9i09JX1athYBl6FfJI5Taaas29p9aD",
     });
     if (response.statusCode == 200) {
-      return breedFromJson(json.decode(response.body));
+      return breedFromJson(response.body);
     } else {
       throw Exception('Failed to load');
     }

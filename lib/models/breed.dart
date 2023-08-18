@@ -10,9 +10,9 @@ class Breed {
   final Weight weight;
   final String id;
   final String name;
-  final String cfaUrl;
-  final String vetstreetUrl;
-  final String vcahospitalsUrl;
+  final String? cfaUrl;
+  final String? vetstreetUrl;
+  final String? vcahospitalsUrl;
   final String temperament;
   final String origin;
   final String countryCodes;
@@ -20,8 +20,8 @@ class Breed {
   final String description;
   final String lifeSpan;
   final int indoor;
-  final int lap;
-  final String altNames;
+  final int? lap;
+  final String? altNames;
   final int adaptability;
   final int affectionLevel;
   final int childFriendly;
@@ -41,10 +41,12 @@ class Breed {
   final int rex;
   final int suppressedTail;
   final int shortLegs;
-  final String wikipediaUrl;
+  final String? wikipediaUrl;
   final int hypoallergenic;
-  final String referenceImageId;
-  final CatImage image;
+  final String? referenceImageId;
+  final CatImage? image;
+  final int? catFriendly;
+  final int? bidability;
 
   Breed({
     required this.weight,
@@ -85,9 +87,13 @@ class Breed {
     required this.hypoallergenic,
     required this.referenceImageId,
     required this.image,
+    required this.catFriendly,
+    required this.bidability,
   });
 
   factory Breed.fromJson(Map<String, dynamic> json) => Breed(
+        bidability: json["bidability"],
+        catFriendly: json["cat_friendly"],
         weight: Weight.fromJson(json["weight"]),
         id: json["id"],
         name: json["name"],
@@ -125,6 +131,6 @@ class Breed {
         wikipediaUrl: json["wikipedia_url"],
         hypoallergenic: json["hypoallergenic"],
         referenceImageId: json["reference_image_id"],
-        image: CatImage.fromJson(json["image"]),
+        image: json["image"] != null ? CatImage.fromJson(json["image"]) : null,
       );
 }
