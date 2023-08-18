@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:cat_app/models/breed.dart';
 import 'package:http/http.dart' show Client;
-import 'dart:convert';
 
 class BreedApi {
   final Client client;
