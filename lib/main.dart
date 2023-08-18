@@ -1,6 +1,12 @@
+import 'package:cat_app/dependency_injection/dependecies_injection.dart';
+import 'package:cat_app/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+import 'screens/home/cubit/home_provider.dart';
+
+void main() async {
+  await setupDependencies();
   runApp(const MainApp());
 }
 
@@ -9,11 +15,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      title: 'Cat App',
+      debugShowCheckedModeBanner: false,
+      home: MultiBlocProvider(
+        providers: [
+          homeCubitProvider(),
+        ],
+        child: const HomeScreen(),
       ),
     );
   }
