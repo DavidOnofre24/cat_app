@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_app/models/breed.dart';
+import 'package:cat_app/screens/breed_detail/breed_detail_route.dart';
 import 'package:cat_app/screens/home/cubit/home_cubit.dart';
+import 'package:cat_app/screens/widgets/start_description.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -137,9 +138,10 @@ class BreedCard extends StatelessWidget {
             horizontal: 20,
           ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          BreedDetailRoute(context, breed: breed).push();
+        },
         child: Container(
-          padding: const EdgeInsets.only(bottom: 10),
           width: MediaQuery.of(context).size.width * 0.43,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -202,28 +204,10 @@ class BreedCard extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Column(
-                      children: [
-                        const Text(
-                          "Intelligence:",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        RatingBar.builder(
-                          unratedColor: const Color(0xffd8d8d8),
-                          direction: Axis.horizontal,
-                          itemSize: 22,
-                          ignoreGestures: true,
-                          itemCount: 5,
-                          initialRating: breed.intelligence.toDouble(),
-                          itemPadding:
-                              const EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          onRatingUpdate: (_) {},
-                        ),
-                      ],
+                    StarsDescription(
+                      label: 'Intelligence:',
+                      isBold: false,
+                      stars: breed.intelligence,
                     ),
                   ],
                 ),
