@@ -13,8 +13,14 @@ dependencies:
   get_it: ^7.2.0
   cached_network_image: ^3.2.2
   flutter_rating_bar: ^4.0.1
+  flutter_native_splash: ^2.2.19
   flutter:
     sdk: flutter
+
+flutter_native_splash:
+  image: assets/images/cat_logo.png
+  color: ffffff
+  fullscreen: true
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +31,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/place_holder.png
+    - assets/images/cat_logo.png
