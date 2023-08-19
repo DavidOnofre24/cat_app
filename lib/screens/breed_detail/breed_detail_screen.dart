@@ -68,7 +68,7 @@ class BreedDetailScreen extends StatelessWidget {
                   value: breed.origin,
                 ),
                 ColumnDescription(
-                  label: 'weight:',
+                  label: 'Weight:',
                   value: '${breed.weight.metric} kg',
                 ),
               ],
