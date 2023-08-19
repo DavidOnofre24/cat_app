@@ -16,7 +16,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cat App',
+      title: 'Cat Breeds',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
       debugShowCheckedModeBanner: false,
       home: MultiBlocProvider(
         providers: [
