@@ -1,12 +1,15 @@
 import 'package:cat_app/dependency_injection/dependecies_injection.dart';
 import 'package:cat_app/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'screens/home/cubit/home_provider.dart';
 
 void main() async {
   await setupDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MainApp());
 }
 
