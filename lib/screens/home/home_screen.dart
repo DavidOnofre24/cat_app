@@ -169,7 +169,7 @@ class BreedCard extends StatelessWidget {
                   top: Radius.circular(10),
                 ),
                 child: CachedNetworkImage(
-                  imageUrl: breed.image?.url ?? '',
+                  imageUrl: breed.imageUrl ?? '',
                   fit: BoxFit.fill,
                   height: 370,
                   width: double.infinity,

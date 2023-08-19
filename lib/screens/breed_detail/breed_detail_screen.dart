@@ -29,7 +29,7 @@ class BreedDetailScreen extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.4,
       width: double.infinity,
       child: CachedNetworkImage(
-        imageUrl: breed.image?.url ?? '',
+        imageUrl: breed.imageUrl ?? '',
         fit: BoxFit.fill,
         height: 370,
         width: double.infinity,

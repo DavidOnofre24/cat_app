@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cat_app/models/cat_image.dart';
 import 'package:cat_app/models/weight.dart';
 
 List<Breed> breedFromJson(String str) =>
@@ -44,9 +43,9 @@ class Breed {
   final String? wikipediaUrl;
   final int hypoallergenic;
   final String? referenceImageId;
-  final CatImage? image;
   final int? catFriendly;
   final int? bidability;
+  final String? imageUrl;
 
   Breed({
     required this.weight,
@@ -86,51 +85,51 @@ class Breed {
     required this.wikipediaUrl,
     required this.hypoallergenic,
     required this.referenceImageId,
-    required this.image,
     required this.catFriendly,
     required this.bidability,
+    this.imageUrl,
   });
 
   factory Breed.fromJson(Map<String, dynamic> json) => Breed(
-        bidability: json["bidability"],
-        catFriendly: json["cat_friendly"],
-        weight: Weight.fromJson(json["weight"]),
-        id: json["id"],
-        name: json["name"],
-        cfaUrl: json["cfa_url"],
-        vetstreetUrl: json["vetstreet_url"],
-        vcahospitalsUrl: json["vcahospitals_url"],
-        temperament: json["temperament"],
-        origin: json["origin"],
-        countryCodes: json["country_codes"],
-        countryCode: json["country_code"],
-        description: json["description"],
-        lifeSpan: json["life_span"],
-        indoor: json["indoor"],
-        lap: json["lap"],
-        altNames: json["alt_names"],
-        adaptability: json["adaptability"],
-        affectionLevel: json["affection_level"],
-        childFriendly: json["child_friendly"],
-        dogFriendly: json["dog_friendly"],
-        energyLevel: json["energy_level"],
-        grooming: json["grooming"],
-        healthIssues: json["health_issues"],
-        intelligence: json["intelligence"],
-        sheddingLevel: json["shedding_level"],
-        socialNeeds: json["social_needs"],
-        strangerFriendly: json["stranger_friendly"],
-        vocalisation: json["vocalisation"],
-        experimental: json["experimental"],
-        hairless: json["hairless"],
-        natural: json["natural"],
-        rare: json["rare"],
-        rex: json["rex"],
-        suppressedTail: json["suppressed_tail"],
-        shortLegs: json["short_legs"],
-        wikipediaUrl: json["wikipedia_url"],
-        hypoallergenic: json["hypoallergenic"],
-        referenceImageId: json["reference_image_id"],
-        image: json["image"] != null ? CatImage.fromJson(json["image"]) : null,
-      );
+      bidability: json["bidability"],
+      catFriendly: json["cat_friendly"],
+      weight: Weight.fromJson(json["weight"]),
+      id: json["id"],
+      name: json["name"],
+      cfaUrl: json["cfa_url"],
+      vetstreetUrl: json["vetstreet_url"],
+      vcahospitalsUrl: json["vcahospitals_url"],
+      temperament: json["temperament"],
+      origin: json["origin"],
+      countryCodes: json["country_codes"],
+      countryCode: json["country_code"],
+      description: json["description"],
+      lifeSpan: json["life_span"],
+      indoor: json["indoor"],
+      lap: json["lap"],
+      altNames: json["alt_names"],
+      adaptability: json["adaptability"],
+      affectionLevel: json["affection_level"],
+      childFriendly: json["child_friendly"],
+      dogFriendly: json["dog_friendly"],
+      energyLevel: json["energy_level"],
+      grooming: json["grooming"],
+      healthIssues: json["health_issues"],
+      intelligence: json["intelligence"],
+      sheddingLevel: json["shedding_level"],
+      socialNeeds: json["social_needs"],
+      strangerFriendly: json["stranger_friendly"],
+      vocalisation: json["vocalisation"],
+      experimental: json["experimental"],
+      hairless: json["hairless"],
+      natural: json["natural"],
+      rare: json["rare"],
+      rex: json["rex"],
+      suppressedTail: json["suppressed_tail"],
+      shortLegs: json["short_legs"],
+      wikipediaUrl: json["wikipedia_url"],
+      hypoallergenic: json["hypoallergenic"],
+      referenceImageId: json["reference_image_id"],
+      imageUrl:
+          "https://cdn2.thecatapi.com/images/${json["reference_image_id"]}.jpg");
 }
