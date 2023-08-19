@@ -77,9 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
       bloc: context.read<HomeCubit>(),
       builder: (context, state) {
         if (state is HomeLoading) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
+          return SliverToBoxAdapter(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
           );
         }
